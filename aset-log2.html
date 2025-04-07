@@ -1,32 +1,24 @@
 <!DOCTYPE html>
 <html>
   <body>
-    <form id="logForm" method="POST" target="_self">
-      <input type="hidden" name="data" id="payload" />
-    </form>
-
     <script>
       const urlParams = new URLSearchParams(window.location.search);
       const token = urlParams.get("token");
-      const webhook = "https://script.google.com/macros/s/AKfycbz2OH3HVo6IeqVdOk2dHcFU6nF3gernaJkMa3SpgDQWG5neNAV9LmOLvFEGKMEKmP8/exec";
+      const webhook = "https://script.google.com/macros/s/AKfycbzpeJyJEKRlvrCdXPqi4JYsU0CIMt7rC4UUT1tqflgdnVitB7IiSofX7z9EbO5vBpg/exec";
 
       const raw = urlParams.get("json");
       const json = decodeURIComponent(raw || "[]");
       const payload = JSON.parse(json);
 
-      // Build and submit a dynamic POST form with correct field
-      const form = document.getElementById("logForm");
-      form.action = webhook + "?token=" + encodeURIComponent(token);
-
-      const input = document.getElementById("payload");
-      input.name = "json"; // must match how Google Apps Script reads it
-      input.value = JSON.stringify(payload);
-
-      // Auto-submit
-      form.submit();
-
-      // Optional: auto-close tab after submission
-      setTimeout(() => window.close(), 1000);
+      fetch(webhook + "?token=" + encodeURIComponent(token), {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      }).then(() => {
+        setTimeout(() => window.close(), 1000);
+      });
     </script>
   </body>
 </html>
