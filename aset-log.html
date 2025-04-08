@@ -22,7 +22,7 @@
       console.log('JSON Payload:', jsonData);  // Log the parsed JSON data
       
       // Validate the required fields
-      const requiredFields = ["Venue Name", "City", "State", "Show Name", "Show Date", "Error Description", "Error Type", "Total Amount", "Artist Impact", "Promoter Impact", "Venue Impact", "How uGigUs Identified It"];
+      // const requiredFields = ["Venue Name", "City", "State", "Show Name", "Show Date", "Error Description", "Error Type", "Total Amount", "Artist Impact", "Promoter Impact", "Venue Impact", "How uGigUs Identified It"];
       const missingFields = requiredFields.filter(field => !jsonData[field]);
 
       if (missingFields.length > 0) {
