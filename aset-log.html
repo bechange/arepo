@@ -17,25 +17,8 @@
   const jsonPayload = params.get("json");
 
   if (jsonPayload) {
-    try {
-      const jsonData = JSON.parse(jsonPayload);
-      console.log('JSON Payload:', jsonData);  // Log the parsed JSON data
-      
-      // Validate the required fields
-      // const requiredFields = ["Venue Name", "City", "State", "Show Name", "Show Date", "Error Description", "Error Type", "Total Amount", "Artist Impact", "Promoter Impact", "Venue Impact", "How uGigUs Identified It"];
-      const missingFields = requiredFields.filter(field => !jsonData[field]);
-
-      if (missingFields.length > 0) {
-        console.error('Missing fields:', missingFields);
-        document.body.innerHTML = `<h2>❌ Missing required fields: ${missingFields.join(', ')}</h2>`;
-      } else {
-        document.getElementById("jsonField").value = jsonPayload;
-        document.getElementById("settlementForm").submit();
-      }
-    } catch (error) {
-      console.error('Invalid JSON:', error);
-      document.body.innerHTML = "<h2>❌ Invalid data format.</h2>";
-    }
+    document.getElementById("jsonField").value = jsonPayload;
+    document.getElementById("settlementForm").submit();
   } else {
     document.body.innerHTML = "<h2>❌ No data to submit.</h2>";
   }
