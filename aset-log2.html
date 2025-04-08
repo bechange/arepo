@@ -1,24 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <body>
-    <script>
-      const urlParams = new URLSearchParams(window.location.search);
-      const token = urlParams.get("token");
-      const webhook = "https://script.google.com/macros/s/AKfycbzpeJyJEKRlvrCdXPqi4JYsU0CIMt7rC4UUT1tqflgdnVitB7IiSofX7z9EbO5vBpg/exec";
+<head><title>uGigUs JSON Logger</title></head>
+<body>
+  <h1>Logging Data...</h1>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const jsonParam = urlParams.get("json");
 
-      const raw = urlParams.get("json");
-      const json = decodeURIComponent(raw || "[]");
-      const payload = JSON.parse(json);
+    if (jsonParam) {
+      const parsedData = JSON.parse(decodeURIComponent(jsonParam));
 
-      fetch(webhook + "?token=" + encodeURIComponent(token), {
+      fetch("https://script.google.com/macros/s/AKfycbyoNBo8DekZ0pAu4WP3U6a5CSbX-PDnCyy6pnk1mY-iQq42Aigdl9bgYW1aMTFw4S0/exec", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(payload)
-      }).then(() => {
-        setTimeout(() => window.close(), 1000);
+        contentType: "application/json",
+        body: JSON.stringify(parsedData)
+      })
+      .then(response => response.text())
+      .then(result => {
+        document.body.innerHTML = "<h2>Submitted: " + result + "</h2>";
+      })
+      .catch(error => {
+        document.body.innerHTML = "<h2>Error: " + error.message + "</h2>";
       });
-    </script>
-  </body>
+    } else {
+      document.body.innerHTML = "<h2>No data to log</h2>";
+    }
+  </script>
+</body>
 </html>
