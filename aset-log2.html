@@ -5,22 +5,28 @@
 </head>
 <body>
   <form id="settlementForm"
-        action="https://script.google.com/macros/s/AKfycbxHExW5En-ptN-7t_-PsOKw7KDgVt9YPQvQLVBtDxO0ThQpeRf8LKjtCIZ0lXa2-0M/exec"
-        method="POST"
-        enctype="application/x-www-form-urlencoded">
-    <input type="hidden" name="json" id="jsonField">
-  </form>
+      action="https://script.google.com/macros/s/AKfycbxHExW5En-ptN-7t_-PsOKw7KDgVt9YPQvQLVBtDxO0ThQpeRf8LKjtCIZ0lXa2-0M/exec"
+      method="POST"
+      enctype="application/x-www-form-urlencoded">
+  <input type="hidden" name="token" id="tokenField">
+  <input type="hidden" name="json" id="jsonField">
+</form>
+
 
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const jsonPayload = params.get("json");
+  const params = new URLSearchParams(window.location.search);
+  const jsonPayload = params.get("json");
+  const token = params.get("token");
 
-    if (jsonPayload) {
-      document.getElementById("jsonField").value = jsonPayload;
-      document.getElementById("settlementForm").submit();
-    } else {
-      document.body.innerHTML = "<h2>❌ No data to submit.</h2>";
-    }
-  </script>
+  if (jsonPayload && token) {
+    const form = document.getElementById("settlementForm");
+    document.getElementById("jsonField").value = jsonPayload;
+    document.getElementById("tokenField").value = token;
+    form.submit();
+  } else {
+    document.body.innerHTML = "<h2>❌ Missing JSON or token in link.</h2>";
+  }
+</script>
+
 </body>
 </html>
