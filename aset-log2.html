@@ -1,29 +1,26 @@
 <!DOCTYPE html>
 <html>
-<head><title>uGigUs JSON Logger</title></head>
+<head>
+  <title>Submitting uGigUs Log...</title>
+</head>
 <body>
-  <h1>Logging Data...</h1>
+  <form id="settlementForm"
+        action="https://script.google.com/macros/s/AKfycbyoNBo8DekZ0pAu4WP3U6a5CSbX-PDnCyy6pnk1mY-iQq42Aigdl9bgYW1aMTFw4S0/exec"
+        method="POST"
+        enctype="application/x-www-form-urlencoded">
+    <input type="hidden" name="token" value="312nek">
+    <input type="hidden" name="json" id="jsonField">
+  </form>
+
   <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const jsonParam = urlParams.get("json");
+    const params = new URLSearchParams(window.location.search);
+    const jsonPayload = params.get("json");
 
-    if (jsonParam) {
-      const parsedData = JSON.parse(decodeURIComponent(jsonParam));
-
-      fetch("https://script.google.com/macros/s/AKfycbyoNBo8DekZ0pAu4WP3U6a5CSbX-PDnCyy6pnk1mY-iQq42Aigdl9bgYW1aMTFw4S0/exec", {
-        method: "POST",
-        contentType: "application/json",
-        body: JSON.stringify(parsedData)
-      })
-      .then(response => response.text())
-      .then(result => {
-        document.body.innerHTML = "<h2>Submitted: " + result + "</h2>";
-      })
-      .catch(error => {
-        document.body.innerHTML = "<h2>Error: " + error.message + "</h2>";
-      });
+    if (jsonPayload) {
+      document.getElementById("jsonField").value = jsonPayload;
+      document.getElementById("settlementForm").submit();
     } else {
-      document.body.innerHTML = "<h2>No data to log</h2>";
+      document.body.innerHTML = "<h2>❌ No data to submit.</h2>";
     }
   </script>
 </body>
