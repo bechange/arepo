@@ -5,7 +5,7 @@
 </head>
 <body>
   <form id="settlementForm"
-        action="https://script.google.com/macros/s/AKfycbxHExW5En-ptN-7t_-PsOKw7KDgVt9YPQvQLVBtDxO0ThQpeRf8LKjtCIZ0lXa2-0M/exec"
+        action="https://script.google.com/macros/s/AKfycbyqcMxINdAB39dXeGYacS78evSGzCC0VCWWIS1l6ejxihkFwK6DP3RYxdr5zoZltzQ/exec"
         method="POST"
         enctype="application/x-www-form-urlencoded">
     <input type="hidden" name="token" id="tokenField">
@@ -14,15 +14,25 @@
 
   <script>
     const params = new URLSearchParams(window.location.search);
-    const jsonPayload = params.get("json");
     const token = params.get("token");
+    const rawJson = params.get("json");
 
-    if (jsonPayload && token) {
-      document.getElementById("tokenField").value = token;
-      document.getElementById("jsonField").value = jsonPayload;
-      document.getElementById("settlementForm").submit();
-    } else {
+    if (!token || !rawJson) {
       document.body.innerHTML = "<h2>❌ Missing JSON or token in link.</h2>";
+    } else {
+      try {
+        const decoded = decodeURIComponent(rawJson);
+        const parsed = JSON.parse(decoded);
+        const normalized = Array.isArray(parsed) ? parsed : [parsed];
+
+        document.getElementById("tokenField").value = token;
+        document.getElementById("jsonField").value = JSON.stringify(normalized);
+        document.getElementById("settlementForm").submit();
+
+        setTimeout(() => window.close(), 1000); // Optional: close after submit
+      } catch (err) {
+        document.body.innerHTML = "<h2>❌ Invalid JSON.</h2><pre>" + err + "</pre>";
+      }
     }
   </script>
 </body>
