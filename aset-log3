@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Submitting CSM Teams Expense Log...</title>
+</head>
+<body>
+  <form id="expenseForm"
+        action="https://script.google.com/macros/s/AKfycbyk_Aqk2Lrt0zdhyZocaBbu2oA7KcWL1MYylgj-cE_fPVXlrbdvAqHGf6RhDQKL0De6SQ/exec"
+        method="POST"
+        enctype="application/x-www-form-urlencoded">
+    <input type="hidden" name="token" id="tokenField">
+    <input type="hidden" name="json" id="jsonField">
+  </form>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const token = params.get("token");
+    const rawJson = params.get("json");
+
+    if (!token || !rawJson) {
+      document.body.innerHTML = "<h2>❌ Missing JSON or token in link.</h2>";
+    } else {
+      try {
+        const decoded = decodeURIComponent(rawJson);
+        const parsed = JSON.parse(decoded);
+        const normalized = Array.isArray(parsed) ? parsed : [parsed];
+
+        document.getElementById("tokenField").value = token;
+        document.getElementById("jsonField").value = JSON.stringify(normalized);
+        document.getElementById("expenseForm").submit();
+
+        setTimeout(() => window.close(), 1000); // Optional: close after submit
+      } catch (err) {
+        document.body.innerHTML = "<h2>❌ Invalid JSON.</h2><pre>" + err + "</pre>";
+      }
+    }
+  </script>
+</body>
+</html>
