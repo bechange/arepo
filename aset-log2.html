@@ -4,36 +4,48 @@
   <title>Submitting uGigUs Log...</title>
 </head>
 <body>
-  <form id="settlementForm"
-        action="https://script.google.com/macros/s/AKfycbyqcMxINdAB39dXeGYacS78evSGzCC0VCWWIS1l6ejxihkFwK6DP3RYxdr5zoZltzQ/exec"
-        method="POST"
-        enctype="application/x-www-form-urlencoded">
-    <input type="hidden" name="token" id="tokenField">
-    <input type="hidden" name="json" id="jsonField">
-  </form>
+  <h2 id="status">Submitting...</h2>
 
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const token = params.get("token");
-    const rawJson = params.get("json");
-
-    if (!token || !rawJson) {
-      document.body.innerHTML = "<h2>❌ Missing JSON or token in link.</h2>";
-    } else {
+    async function submitIssues() {
       try {
-        const decoded = decodeURIComponent(rawJson);
-        const parsed = JSON.parse(decoded);
-        const normalized = Array.isArray(parsed) ? parsed : [parsed];
+        const response = await fetch(window.location.href, {
+          method: 'POST'
+        });
+        const body = await response.json();
+        const token = body.token;
+        const issues = body.issues;
 
-        document.getElementById("tokenField").value = token;
-        document.getElementById("jsonField").value = JSON.stringify(normalized);
-        document.getElementById("settlementForm").submit();
+        if (!token || !Array.isArray(issues) || issues.length === 0) {
+          document.getElementById('status').innerText = "❌ Invalid or missing token/issues.";
+          return;
+        }
 
-        setTimeout(() => window.close(), 1000); // Optional: close after submit
+        // Forward data to Google Apps Script
+        const forwardResponse = await fetch('https://script.google.com/macros/s/AKfycbyqcMxINdAB39dXeGYacS78evSGzCC0VCWWIS1l6ejxihkFwK6DP3RYxdr5zoZltzQ/exec', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            token: token,
+            issues: issues
+          })
+        });
+
+        if (forwardResponse.ok) {
+          document.getElementById('status').innerText = "✅ Settlement issue successfully logged!";
+          setTimeout(() => window.close(), 1500); // Optional auto-close
+        } else {
+          document.getElementById('status').innerText = "❌ Failed to forward to Google Sheets.";
+        }
       } catch (err) {
-        document.body.innerHTML = "<h2>❌ Invalid JSON.</h2><pre>" + err + "</pre>";
+        console.error(err);
+        document.getElementById('status').innerText = "❌ Error submitting issues.";
       }
     }
+
+    submitIssues();
   </script>
 </body>
 </html>
