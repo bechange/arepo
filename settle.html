@@ -6,99 +6,168 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body {
+      margin: 0;
       font-family: Arial, sans-serif;
-      line-height: 1.6;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 2rem;
-      background: #f9f9f9;
+      background: #f8f8f8;
+      display: flex;
     }
-    h1 {
-      text-align: center;
+
+    /* Sticky Side Nav */
+    nav {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      width: 220px;
+      background: #ffffff;
+      border-right: 1px solid #ddd;
+      padding: 1.5rem 1rem;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+    }
+
+    nav h2 {
+      font-size: 1rem;
+      margin-bottom: 1rem;
       color: #333;
-    } 
-    h2 {
-      color: #222;
-      margin-top: 2.5rem;
     }
-    img {
-      max-width: 100%;
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    nav li {
+      margin: 0.7rem 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #0077cc;
+    }
+
+    main {
+      flex: 1;
+      padding: 2rem;
+    }
+
+    section {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 3rem;
+      gap: 2rem;
+    }
+
+    section img {
+      max-width: 60%;
       border: 1px solid #ccc;
       border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      margin-top: 0.5rem;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
-    nav {
+
+    .notes {
+      flex: 1;
       background: #fff;
-      padding: 1rem;
       border: 1px solid #ddd;
+      padding: 1rem;
       border-radius: 8px;
-      margin-bottom: 2rem;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     }
-    nav ul {
-      padding-left: 1rem;
-    }
-    nav li {
-      margin: 0.3rem 0;
-    }
-    p {
-      margin-top: 0.5rem;
+
+    .notes h3 {
+      margin-top: 0;
     }
   </style>
 </head>
 <body>
 
-  <h1>🛠️ uGigUs Quick Start Guide</h1>
-  <p style="text-align:center; color:#555;">Learn how to enter ticket revenues, stats, expenses, and artist payouts</p>
-
+  <!-- Sticky Side Nav -->
   <nav>
-    <strong>Jump to a section:</strong>
+    <h2>Quick Jump</h2>
     <ul>
       <li><a href="#ticket-revenues">🎟️ Ticket Revenues</a></li>
-      <li><a href="#ticket-stats">📊 Ticket Stats - Drop Count</a></li>
+      <li><a href="#ticket-stats">📊 Ticket Stats</a></li>
       <li><a href="#expenses">💸 Expenses</a></li>
       <li><a href="#artist-earnings">🎤 Artist Earnings</a></li>
-      <li><a href="#artist-additions">➕ Artist Additions: Buyouts & Reimbursements</a></li>
-      <li><a href="#payout-deductions">➖ Payout Deductions: Artist Deposits</a></li>
+      <li><a href="#artist-additions">➕ Additions</a></li>
+      <li><a href="#payout-deductions">➖ Deductions</a></li>
     </ul>
   </nav>
 
-  <div id="ticket-revenues">
-    <h2>🎟️ Ticket Revenues</h2>
-    <img src="https://bechange.github.io/arepo/docs/1.gif" alt="Ticket Revenues">
-    <p>This GIF shows how to add and manage ticket revenue entries.</p>
-  </div>
+  <!-- Main Content -->
+  <main>
 
-  <div id="ticket-stats">
-    <h2>📊 Ticket Stats - Drop Count</h2>
-    <img src="https://bechange.github.io/arepo/docs/2.gif" alt="Ticket Stats Drop Count">
-    <p>This GIF walks through setting the drop count and managing ticket stats.</p>
-  </div>
+    <section id="ticket-revenues">
+      <img src="https://bechange.github.io/arepo/docs/1.gif" alt="Ticket Revenues">
+      <div class="notes">
+        <h3>🎟️ Ticket Revenues</h3>
+        <ul>
+          <li>Enter revenue lines shown on the ticketing audit.</li>
+          <li>Use proper tax settings based on whether fees are included.</li>
+          <li>Click the blue plus icon to add more entries.</li>
+        </ul>
+      </div>
+    </section>
 
-  <div id="expenses">
-    <h2>💸 Expenses</h2>
-    <img src="https://bechange.github.io/arepo/docs/3.gif" alt="Expenses">
-    <p>How to add and organize general expense items.</p>
-  </div>
+    <section id="ticket-stats">
+      <img src="https://bechange.github.io/arepo/docs/2.gif" alt="Ticket Stats Drop Count">
+      <div class="notes">
+        <h3>📊 Ticket Stats - Drop Count</h3>
+        <ul>
+          <li>Enter total sold and comp counts here.</li>
+          <li>Drop count = sold + comp (used for tax/proration).</li>
+          <li>Ensure numbers align with the box office audit.</li>
+        </ul>
+      </div>
+    </section>
 
-  <div id="artist-earnings">
-    <h2>🎤 Artist Earnings</h2>
-    <img src="https://bechange.github.io/arepo/docs/4.gif" alt="Artist Earnings">
-    <p>Shows how to enter the artist’s guarantee and final earnings.</p>
-  </div>
+    <section id="expenses">
+      <img src="https://bechange.github.io/arepo/docs/3.gif" alt="Expenses">
+      <div class="notes">
+        <h3>💸 Expenses</h3>
+        <ul>
+          <li>Enter each expense with its value and notes.</li>
+          <li>Use red dots to flag who is incurring the cost.</li>
+          <li>Use the “+” to add additional line items.</li>
+        </ul>
+      </div>
+    </section>
 
-  <div id="artist-additions">
-    <h2>➕ Artist Additions: Buyouts & Reimbursements</h2>
-    <img src="https://bechange.github.io/arepo/docs/5.gif" alt="Artist Additions">
-    <p>Steps to add buyouts and reimbursements to the artist's total.</p>
-  </div>
+    <section id="artist-earnings">
+      <img src="https://bechange.github.io/arepo/docs/4.gif" alt="Artist Earnings">
+      <div class="notes">
+        <h3>🎤 Artist Earnings</h3>
+        <ul>
+          <li>Guarantee is auto-pulled from the deal sheet.</li>
+          <li>Use overage or bonuses if applicable.</li>
+          <li>Balance Due is calculated automatically.</li>
+        </ul>
+      </div>
+    </section>
 
-  <div id="payout-deductions">
-    <h2>➖ Payout Deductions: Artist Deposits</h2>
-    <img src="https://bechange.github.io/arepo/docs/6.gif" alt="Payout Deductions">
-    <p>Details how to deduct artist deposits from the final payout.</p>
-  </div>
+    <section id="artist-additions">
+      <img src="https://bechange.github.io/arepo/docs/5.gif" alt="Artist Additions">
+      <div class="notes">
+        <h3>➕ Artist Additions: Buyouts & Reimbursements</h3>
+        <ul>
+          <li>Enter meal buyouts, gas, or lodging reimbursements here.</li>
+          <li>Attach backup receipts if needed.</li>
+          <li>This increases total artist earnings.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="payout-deductions">
+      <img src="https://bechange.github.io/arepo/docs/6.gif" alt="Payout Deductions">
+      <div class="notes">
+        <h3>➖ Payout Deductions: Artist Deposits</h3>
+        <ul>
+          <li>Deduct any advance wires or deposits here.</li>
+          <li>Final payout = Total Earned - Deductions</li>
+          <li>Use the notes field to clarify payment details.</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
 
 </body>
 </html>
