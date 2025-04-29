@@ -1,105 +1,106 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>uGigUs Quick Start Guide</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+  * {
+    box-sizing: border-box;
+  }
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f8f8f8;
-    }
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f8f8f8;
+  }
 
-    header {
-      position: sticky;
-      top: 0;
-      background: #ffffff;
-      border-bottom: 1px solid #ddd;
-      z-index: 1000;
-      padding: 1rem 2rem;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    }
+  header {
+    position: sticky;
+    top: 0;
+    background: #ffffff;
+    border-bottom: 1px solid #ddd;
+    z-index: 1000;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
 
-    header h1 {
-      margin: 0;
-      font-size: 1.25rem;
-      color: #333;
-    }
+  header h1 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: #333;
+  }
 
-    nav {
-      margin-top: 0.5rem;
-    }
+  nav {
+    margin-top: 0.5rem;
+  }
 
-    nav ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
+  nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
 
-    nav li {
-      margin: 0;
-    }
+  nav a {
+    text-decoration: none;
+    color: #0077cc;
+    font-size: 0.95rem;
+  }
 
-    nav a {
-      text-decoration: none;
-      color: #0077cc;
-      font-size: 0.95rem;
-    }
+  main {
+    padding: 2rem;
+    max-width: 100%;
+  }
 
-    main {
-      padding: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+  .section {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+    padding: 0 2rem;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
 
-    section {
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: 3rem;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
+  .section img {
+    flex: 2 1 65%;
+    width: 100%;
+    max-width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
 
-    section img {
-      flex: 2;
-      max-width: 100%;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  .notes {
+    flex: 1 1 30%;
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    min-width: 250px;
+  }
+
+  .notes h3 {
+    margin-top: 0;
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 768px) {
+    .section {
+      flex-direction: column;
+      padding: 1rem;
     }
 
     .notes {
-      flex: 1;
-      background: #fff;
-      border: 1px solid #ddd;
-      padding: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-      min-width: 260px;
+      order: 2;
     }
 
-    .notes h3 {
-      margin-top: 0;
+    .section img {
+      order: 1;
     }
+  }
+</style>
 
-    @media (max-width: 768px) {
-      section {
-        flex-direction: column;
-      }
-    }
-  </style>
-</head>
 <body>
 
-  <!-- Sticky Top Nav -->
   <header>
     <h1>🛠️ uGigUs Quick Start Guide</h1>
     <nav>
@@ -114,10 +115,9 @@
     </nav>
   </header>
 
-  <!-- Main Content -->
   <main>
 
-    <section id="ticket-revenues">
+    <div id="ticket-revenues" class="section">
       <img src="https://bechange.github.io/arepo/docs/1.gif" alt="Ticket Revenues">
       <div class="notes">
         <h3>🎟️ Ticket Revenues</h3>
@@ -127,9 +127,9 @@
           <li>Click the blue plus icon to add more entries.</li>
         </ul>
       </div>
-    </section>
+    </div>
 
-    <section id="ticket-stats">
+    <div id="ticket-stats" class="section">
       <img src="https://bechange.github.io/arepo/docs/2.gif" alt="Ticket Stats Drop Count">
       <div class="notes">
         <h3>📊 Ticket Stats - Drop Count</h3>
@@ -139,9 +139,9 @@
           <li>Ensure numbers align with the box office audit.</li>
         </ul>
       </div>
-    </section>
+    </div>
 
-    <section id="expenses">
+    <div id="expenses" class="section">
       <img src="https://bechange.github.io/arepo/docs/3.gif" alt="Expenses">
       <div class="notes">
         <h3>💸 Expenses</h3>
@@ -151,9 +151,9 @@
           <li>Use the “+” to add additional line items.</li>
         </ul>
       </div>
-    </section>
+    </div>
 
-    <section id="artist-earnings">
+    <div id="artist-earnings" class="section">
       <img src="https://bechange.github.io/arepo/docs/4.gif" alt="Artist Earnings">
       <div class="notes">
         <h3>🎤 Artist Earnings</h3>
@@ -163,9 +163,9 @@
           <li>Balance Due is calculated automatically.</li>
         </ul>
       </div>
-    </section>
+    </div>
 
-    <section id="artist-additions">
+    <div id="artist-additions" class="section">
       <img src="https://bechange.github.io/arepo/docs/5.gif" alt="Artist Additions">
       <div class="notes">
         <h3>➕ Artist Additions: Buyouts & Reimbursements</h3>
@@ -175,9 +175,9 @@
           <li>This increases total artist earnings.</li>
         </ul>
       </div>
-    </section>
+    </div>
 
-    <section id="payout-deductions">
+    <div id="payout-deductions" class="section">
       <img src="https://bechange.github.io/arepo/docs/6.gif" alt="Payout Deductions">
       <div class="notes">
         <h3>➖ Payout Deductions: Artist Deposits</h3>
@@ -187,9 +187,7 @@
           <li>Use the notes field to clarify payment details.</li>
         </ul>
       </div>
-    </section>
+    </div>
 
   </main>
-
 </body>
-</html>
