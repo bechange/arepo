@@ -5,48 +5,59 @@
   <title>uGigUs Quick Start Guide</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background: #f8f8f8;
-      display: flex;
     }
 
-    /* Sticky Side Nav */
-    nav {
+    header {
       position: sticky;
       top: 0;
-      height: 100vh;
-      width: 220px;
       background: #ffffff;
-      border-right: 1px solid #ddd;
-      padding: 1.5rem 1rem;
-      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+      border-bottom: 1px solid #ddd;
+      z-index: 1000;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
 
-    nav h2 {
-      font-size: 1rem;
-      margin-bottom: 1rem;
+    header h1 {
+      margin: 0;
+      font-size: 1.25rem;
       color: #333;
+    }
+
+    nav {
+      margin-top: 0.5rem;
     }
 
     nav ul {
       list-style: none;
       padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
 
     nav li {
-      margin: 0.7rem 0;
+      margin: 0;
     }
 
     nav a {
       text-decoration: none;
       color: #0077cc;
+      font-size: 0.95rem;
     }
 
     main {
-      flex: 1;
       padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     section {
@@ -54,10 +65,12 @@
       align-items: flex-start;
       margin-bottom: 3rem;
       gap: 2rem;
+      flex-wrap: wrap;
     }
 
     section img {
-      max-width: 60%;
+      flex: 2;
+      max-width: 100%;
       border: 1px solid #ccc;
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -70,27 +83,36 @@
       padding: 1rem;
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      min-width: 260px;
     }
 
     .notes h3 {
       margin-top: 0;
     }
+
+    @media (max-width: 768px) {
+      section {
+        flex-direction: column;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <!-- Sticky Side Nav -->
-  <nav>
-    <h2>Quick Jump</h2>
-    <ul>
-      <li><a href="#ticket-revenues">🎟️ Ticket Revenues</a></li>
-      <li><a href="#ticket-stats">📊 Ticket Stats</a></li>
-      <li><a href="#expenses">💸 Expenses</a></li>
-      <li><a href="#artist-earnings">🎤 Artist Earnings</a></li>
-      <li><a href="#artist-additions">➕ Additions</a></li>
-      <li><a href="#payout-deductions">➖ Deductions</a></li>
-    </ul>
-  </nav>
+  <!-- Sticky Top Nav -->
+  <header>
+    <h1>🛠️ uGigUs Quick Start Guide</h1>
+    <nav>
+      <ul>
+        <li><a href="#ticket-revenues">🎟️ Ticket Revenues</a></li>
+        <li><a href="#ticket-stats">📊 Ticket Stats</a></li>
+        <li><a href="#expenses">💸 Expenses</a></li>
+        <li><a href="#artist-earnings">🎤 Artist Earnings</a></li>
+        <li><a href="#artist-additions">➕ Additions</a></li>
+        <li><a href="#payout-deductions">➖ Deductions</a></li>
+      </ul>
+    </nav>
+  </header>
 
   <!-- Main Content -->
   <main>
