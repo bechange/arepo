@@ -76,9 +76,13 @@
       border: 1px solid #ddd;
       padding: 1rem;
       border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       min-width: 250px;
       flex: 1;
+      position: sticky;
+      top: 120px;
+      align-self: flex-start;
+      background-color: #fcfcfc;
     }
 
     .notes h3 {
@@ -109,6 +113,7 @@
 
       .notes {
         width: 100%;
+        position: static;
       }
     }
   </style>
@@ -147,7 +152,7 @@
       <div class="notes">
         <h3>📊 Ticket Stats - Drop Count</h3>
         <ul>
-          <li>Enter sold and comps — system calculates drop count for you.</li>
+          <li>Enter sold, comps, and drop count.</li>
         </ul>
       </div>
     </div>
@@ -157,7 +162,7 @@
       <div class="notes">
         <h3>💸 Expenses</h3>
         <ul>
-          <li>Log each cost and assign who pays it (artist, venue, etc.).</li>
+          <li>Log each cost and assign who incurs it (promoter, venue, etc.).</li>
         </ul>
       </div>
     </div>
@@ -167,7 +172,7 @@
       <div class="notes">
         <h3>🎤 Artist Earnings</h3>
         <ul>
-          <li>Check the guarantee, add overages if needed, done.</li>
+          <li>After all show revenues and expenses are entered, enter in actual artist earnings.</li>
         </ul>
       </div>
     </div>
@@ -177,7 +182,7 @@
       <div class="notes">
         <h3>➕ Artist Additions: Buyouts & Reimbursements</h3>
         <ul>
-          <li>Plug in meals, gas, or extras the artist should be paid back for.</li>
+          <li>Plug in meal buyouts, reimbursements, and any extras the artist should be paid for.</li>
         </ul>
       </div>
     </div>
@@ -187,7 +192,7 @@
       <div class="notes">
         <h3>➖ Payout Deductions: Deposits and Past Payments</h3>
         <ul>
-          <li>Subtract deposits or wires already paid — balance adjusts automatically.</li>
+          <li>Account for any deposits or wires already paid — balance due to artist adjusts automatically.</li>
         </ul>
       </div>
     </div>
