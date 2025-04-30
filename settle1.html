@@ -63,17 +63,26 @@
     .section {
       margin-bottom: 4rem;
       padding: 0 2rem;
-      scroll-margin-top: 100px; /* Offset for sticky nav */
+      scroll-margin-top: 100px;
+      display: flex;
+      flex-direction: row;
+      gap: 2rem;
+      align-items: flex-start;
+      flex-wrap: wrap;
     }
-
 
     .notes {
       background: #fff;
       border: 1px solid #ddd;
       padding: 1rem;
       border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-      margin-bottom: 1rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      min-width: 250px;
+      flex: 1;
+      position: sticky;
+      top: 120px;
+      align-self: flex-start;
+      background-color: #fcfcfc;
     }
 
     .notes h3 {
@@ -81,16 +90,30 @@
     }
 
     .section img {
-      width: 100%;
       max-width: 100%;
+      width: 65%;
       border: 1px solid #ccc;
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      flex: 2;
     }
 
     @media (max-width: 768px) {
       nav ul {
         flex-direction: column;
+      }
+
+      .section {
+        flex-direction: column;
+      }
+
+      .section img {
+        width: 100%;
+      }
+
+      .notes {
+        width: 100%;
+        position: static;
       }
     }
   </style>
@@ -115,63 +138,63 @@
   <main>
 
     <div id="ticket-revenues" class="section">
+      <img src="https://bechange.github.io/arepo/docs/1.gif" alt="Ticket Revenues">
       <div class="notes">
         <h3>🎟️ Ticket Revenues</h3>
         <ul>
-          <li>Enter ticketing revenues</li>
+          <li>Click the plus icon and match each line to the audit.</li>
         </ul>
       </div>
-      <img src="https://bechange.github.io/arepo/docs/1.gif" alt="Ticket Revenues">
     </div>
 
     <div id="ticket-stats" class="section">
+      <img src="https://bechange.github.io/arepo/docs/2.gif" alt="Ticket Stats Drop Count">
       <div class="notes">
         <h3>📊 Ticket Stats - Drop Count</h3>
         <ul>
-          <li>Enter total sold, comp, and drop count.</li>
+          <li>Enter sold, comps, and drop count.</li>
         </ul>
       </div>
-      <img src="https://bechange.github.io/arepo/docs/2.gif" alt="Ticket Stats Drop Count">
     </div>
 
     <div id="expenses" class="section">
+      <img src="https://bechange.github.io/arepo/docs/3.gif" alt="Expenses">
       <div class="notes">
         <h3>💸 Expenses</h3>
         <ul>
-          <li>Enter expenses.</li>
+          <li>Log each cost and assign who incurs it (promoter, venue, etc.).</li>
         </ul>
       </div>
-      <img src="https://bechange.github.io/arepo/docs/3.gif" alt="Expenses">
     </div>
 
     <div id="artist-earnings" class="section">
+      <img src="https://bechange.github.io/arepo/docs/4.gif" alt="Artist Earnings">
       <div class="notes">
         <h3>🎤 Artist Earnings</h3>
         <ul>
-          <li>Enter actual artist earnings.</li>
+          <li>After all of the show revenues and expenses are entered into the system, uGigUs calculates total artist earnings.  Enter the actual artist earnings.</li>
         </ul>
       </div>
-      <img src="https://bechange.github.io/arepo/docs/4.gif" alt="Artist Earnings">
     </div>
 
     <div id="artist-additions" class="section">
+      <img src="https://bechange.github.io/arepo/docs/5.gif" alt="Artist Additions">
       <div class="notes">
         <h3>➕ Artist Additions: Buyouts & Reimbursements</h3>
         <ul>
-          <li>Add buyouts, reimbursements, or other money due to artist.</li>
+          <li>Plug in meal buyouts, reimbursements, and any extras the artist should be paid for.</li>
         </ul>
       </div>
-      <img src="https://bechange.github.io/arepo/docs/5.gif" alt="Artist Additions">
     </div>
 
     <div id="payout-deductions" class="section">
+      <img src="https://bechange.github.io/arepo/docs/6.gif" alt="Payout Deductions">
       <div class="notes">
         <h3>➖ Payout Deductions: Deposits and Past Payments</h3>
         <ul>
-          <li>Enter any payments already made (Deposits, Wires, etc.).</li>
+          <li>Account for any deposits or wires already paid — balance due to artist adjusts automatically.</li>
         </ul>
       </div>
-      <img src="https://bechange.github.io/arepo/docs/6.gif" alt="Payout Deductions">
     </div>
 
   </main>
@@ -182,12 +205,12 @@
     window.addEventListener("scroll", () => {
       let current = "";
       document.querySelectorAll("main .section").forEach((section) => {
-        const sectionTop = section.offsetTop - 120; // Match sticky header height + gap
+        const sectionTop = section.offsetTop - 120;
         if (pageYOffset >= sectionTop) {
           current = section.getAttribute("id");
         }
       });
-    
+
       navLinks.forEach((link) => {
         link.classList.remove("active");
         if (link.getAttribute("href") === `#${current}`) {
@@ -195,7 +218,6 @@
         }
       });
     });
-
   </script>
 
 </body>
