@@ -18,13 +18,15 @@
       overflow-y: auto;
       background-color: #f8f8f8;
       border-right: 1px solid #ddd;
-      padding-top: 1rem;
+      padding: 1rem 0.5rem;
+      min-width: 180px;
     }
     .sidebar a {
       display: block;
-      padding: 0.5rem 1rem;
+      padding: 0.3rem 0.75rem;
       text-decoration: none;
       color: #0077cc;
+      font-size: 0.9rem;
     }
     .sidebar a.active {
       background: #0077cc;
@@ -86,64 +88,123 @@
   <div class="container-fluid">
     <div class="row">
       <!-- Sidebar -->
-      <aside class="col-md-3 col-lg-2 sidebar">
+      <aside class="col-auto sidebar">
         <nav>
-          <a href="#ticket-revenues">🎟️ Revenues</a>
-          <a href="#ticket-stats">📊 Stats</a>
-          <a href="#expenses">💸 Expenses</a>
-          <a href="#artist-earnings">🎤 Earnings</a>
-          <a href="#artist-additions">➕ Additions</a>
-          <a href="#payout-deductions">➖ Deductions</a>
+          <a href="#session1">Session 1: Core Functions</a>
+          <a href="#session2">Session 2: Promoter Settlement</a>
+          <a href="#session3">Session 3: Actual vs Internal</a>
+          <a href="#session4">Session 4: Revenue Splits</a>
         </nav>
       </aside>
 
       <!-- Main Content -->
-      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 pt-4">
-        <div id="ticket-revenues" class="section">
-          <img src="https://bechange.github.io/arepo/docs/1.gif" alt="Ticket Revenues">
-          <div class="notes">
-            <h3>🎟️ Ticket Revenues</h3>
-            <ul><li>Click the plus icon and match each line to the audit.</li></ul>
+      <main class="col ps-md-4 pt-4">
+
+        <!-- Session 1 -->
+        <div id="session1" class="mb-5">
+          <h2>Session 1: Artist Settlement – Core Functions</h2>
+
+          <div class="section">
+            <img src="https://via.placeholder.com/600x300" alt="Add Show Revenues">
+            <div class="notes">
+              <h3>Add Show Revenues, Fees, Taxes</h3>
+              <ul><li>Record all gross revenues, tax breakdowns, and show fees.</li></ul>
+            </div>
+          </div>
+
+          <div class="section">
+            <img src="https://via.placeholder.com/600x300" alt="Add Ticket Stats">
+            <div class="notes">
+              <h3>Add Ticket Stats</h3>
+              <ul><li>Enter ticket counts including comps and drops.</li></ul>
+            </div>
+          </div>
+
+          <div class="section">
+            <img src="https://via.placeholder.com/600x300" alt="Add Expenses">
+            <div class="notes">
+              <h3>Add Standard Expenses</h3>
+              <ul><li>Input final actual costs and assign responsibilities.</li></ul>
+            </div>
+          </div>
+
+          <div class="section">
+            <img src="https://via.placeholder.com/600x300" alt="Buyouts and Reimbursements">
+            <div class="notes">
+              <h3>Add Buyouts and Reimbursements</h3>
+              <ul><li>Include meals, travel, and additional artist costs.</li></ul>
+            </div>
+          </div>
+
+          <div class="section">
+            <img src="https://via.placeholder.com/600x300" alt="Artist Earnings">
+            <div class="notes">
+              <h3>Enter Artist Earnings + Deposits</h3>
+              <ul><li>Finalize artist earnings and log any previous deposits or payments.</li></ul>
+            </div>
           </div>
         </div>
 
-        <div id="ticket-stats" class="section">
-          <img src="https://bechange.github.io/arepo/docs/2.gif" alt="Ticket Stats Drop Count">
-          <div class="notes">
-            <h3>📊 Ticket Stats - Drop Count</h3>
-            <ul><li>Enter sold, comps, and drop count.</li></ul>
+        <!-- Session 2 -->
+        <div id="session2" class="mb-5">
+          <h2>Session 2: Promoter Settlement – Ancillary and Exclusions</h2>
+
+          <div class="section">
+            <img src="https://via.placeholder.com/600x300" alt="Ancillary Revenue">
+            <div class="notes">
+              <h3>Add Ancillary Revenue</h3>
+              <ul><li>Include sponsorships, VIP, parking, and other non-ticket income.</li></ul>
+            </div>
+          </div>
+
+          <div class="section">
+            <img src="https://via.placeholder.com/600x300" alt="Exclude Rent">
+            <div class="notes">
+              <h3>Exclude Venue Rent</h3>
+              <ul><li>Remove venue rent from promoter-facing settlement calculations.</li></ul>
+            </div>
           </div>
         </div>
 
-        <div id="expenses" class="section">
-          <img src="https://bechange.github.io/arepo/docs/3.gif" alt="Expenses">
-          <div class="notes">
-            <h3>💸 Expenses</h3>
-            <ul><li>Log each cost and assign who incurs it (promoter, venue, etc.).</li></ul>
+        <!-- Session 3 -->
+        <div id="session3" class="mb-5">
+          <h2>Session 3: Actual vs Internal Expenses</h2>
+
+          <div class="section">
+            <img src="https://via.placeholder.com/600x300" alt="Labor Breakdown">
+            <div class="notes">
+              <h3>Differentiate Artist vs Internal Labor</h3>
+              <ul><li>Tag labor expenses by visibility to ensure accurate reporting.</li></ul>
+            </div>
+          </div>
+
+          <div class="section">
+            <img src="https://via.placeholder.com/600x300" alt="Exclude Internal">
+            <div class="notes">
+              <h3>Exclude Internal-Only Expenses</h3>
+              <ul><li>Ensure back-office or internal costs are excluded from artist-facing totals.</li></ul>
+            </div>
           </div>
         </div>
 
-        <div id="artist-earnings" class="section">
-          <img src="https://bechange.github.io/arepo/docs/4.gif" alt="Artist Earnings">
-          <div class="notes">
-            <h3>🎤 Artist Earnings</h3>
-            <ul><li>After all of the show revenues and expenses are entered into the system, uGigUs calculates total artist earnings. Enter the actual artist earnings.</li></ul>
-          </div>
-        </div>
+        <!-- Session 4 -->
+        <div id="session4" class="mb-5">
+          <h2>Session 4: Non-Shared Revenue, Additions, Deductions</h2>
 
-        <div id="artist-additions" class="section">
-          <img src="https://bechange.github.io/arepo/docs/5.gif" alt="Artist Additions">
-          <div class="notes">
-            <h3>➕ Artist Additions: Buyouts & Reimbursements</h3>
-            <ul><li>Plug in meal buyouts, reimbursements, and any extras the artist should be paid for.</li></ul>
+          <div class="section">
+            <img src="https://via.placeholder.com/600x300" alt="Non-Shared Revenue">
+            <div class="notes">
+              <h3>Add Non-Shared Revenue</h3>
+              <ul><li>Declare and split revenue items not shared with artist (e.g., merch, bar sales).</li></ul>
+            </div>
           </div>
-        </div>
 
-        <div id="payout-deductions" class="section">
-          <img src="https://bechange.github.io/arepo/docs/6.gif" alt="Payout Deductions">
-          <div class="notes">
-            <h3>➖ Payout Deductions: Deposits and Past Payments</h3>
-            <ul><li>Account for any deposits or wires already paid — balance due to artist adjusts automatically.</li></ul>
+          <div class="section">
+            <img src="https://via.placeholder.com/600x300" alt="Additions and Deductions">
+            <div class="notes">
+              <h3>Additions and Deductions</h3>
+              <ul><li>Use manual adjustments for settlement-specific items like penalties or bonuses.</li></ul>
+            </div>
           </div>
         </div>
       </main>
@@ -157,7 +218,7 @@
       document.querySelectorAll("main .section").forEach((section) => {
         const sectionTop = section.offsetTop - 130;
         if (window.scrollY >= sectionTop) {
-          current = section.getAttribute("id");
+          current = section.getAttribute("id") || section.closest("div[id]").id;
         }
       });
       navLinks.forEach((link) => {
